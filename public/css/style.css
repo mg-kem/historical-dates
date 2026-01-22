@@ -1,0 +1,106 @@
+@import './fonts.css';
+
+html {}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans';
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 1440px;
+    min-height: 100vh;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-left: 1px solid rgba(66, 86, 122, 0.1);
+    border-right: 1px solid rgba(66, 86, 122, 0.1);
+
+    @media (max-width: 320px) {
+        .container {
+            padding: 0 16px;
+        }
+    }
+}
+
+.container::before,
+.container::after {
+    content: '';
+    position: absolute;
+    background: rgba(66, 86, 122, 0.1);
+
+}
+
+.container::before {
+    width: 1px;
+    height: 100%;
+    left: 50%;
+}
+
+.container::after {
+    width: 100%;
+    height: 1px;
+    top: 50%;
+}
+
+.historical-dates {
+    margin-top: 170px;
+    flex-grow: 1;
+    position: relative;
+}
+
+.header-title {
+    margin: 0;
+    padding: 0;
+    font-size: 56px;
+    color: #42567A;
+    position: absolute;
+    left: 80px;
+    width: 353px;
+}
+
+.event-list {
+    max-width: 1200px;
+    display: flex;
+    gap: 80px;
+    margin-left: 80px;
+    margin-right: auto;
+    margin-bottom: 104px;
+}
+
+.event-title {
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 0;
+    font-family: 'Bebas Neue';
+    font-size: 25px;
+    color: #3877EE;
+}
+
+.event-item {
+    height: 135px;
+    font-size: 20px;
+    line-height: 30px;
+    color: #42567A;
+}
+
+.years-container {
+    width: 973px;
+    margin-left: 217px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 200px;
+    line-height: 160px;
+}
+
+.date-up {
+    color: #5D5FEF;
+}
+
+.date-to {
+    color: #EF5DA8;
+}
