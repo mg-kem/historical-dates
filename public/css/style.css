@@ -1,5 +1,11 @@
 @import './fonts.css';
 
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,29 +13,33 @@ body {
 }
 
 .container {
-
-    position: relative;
-    display: flex;
-    flex-direction: column;
     max-width: 1440px;
     min-height: 100vh;
     margin: 0 auto;
     box-sizing: border-box;
+
     border-left: 1px solid rgba(66, 86, 122, 0.1);
     border-right: 1px solid rgba(66, 86, 122, 0.1);
 
-    @media (max-width: 320px) {
-        .container {
-            padding: 0 16px;
-        }
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
+
+@media (max-width: 320px) {
+    .container {
+        padding: 0 16px;
     }
 }
 
 .link-container {
-    border: 1px solid rgba(66, 86, 122, 0.1);
-    border-radius: 50%;
     width: 530px;
     height: 530px;
+
+    border: 1px solid rgba(66, 86, 122, 0.1);
+    border-radius: 50%;
+
     position: absolute;
     top: 50%;
     left: 50%;
@@ -39,52 +49,77 @@ body {
 .container::before {
     content: '';
     position: absolute;
-    background: rgba(66, 86, 122, 0.1);
+    left: 50%;
+    top: 0;
+
     width: 1px;
     height: 100%;
-    left: 50%;
+
+    background: rgba(66, 86, 122, 0.1);
 }
 
 .historical-dates {
     margin-top: 170px;
     flex-grow: 1;
-    position: relative;
 
+    position: relative;
 }
 
 .historical-dates::after {
     content: '';
     position: absolute;
-    background: rgba(66, 86, 122, 0.1);
+    top: 50%;
+    left: 0;
+
     width: 100%;
     height: 1px;
-    top: 50%;
+
+    background: rgba(66, 86, 122, 0.1);
 }
 
 .header-title {
     margin: 0;
     padding: 0;
+    width: 353px;
+
     font-size: 56px;
     color: #42567A;
+
     position: absolute;
     left: 80px;
     top: 0;
-    width: 353px;
 }
+
+.header-title::before {
+    content: '';
+    position: absolute;
+    left: -80px;
+    top: 0;
+
+    width: 5px;
+    height: 100%;
+
+    background: linear-gradient(#3877EE, #EF5DA8);
+}
+
 
 .event-list {
     max-width: 1200px;
-    display: flex;
-    gap: 80px;
     margin-left: 80px;
     margin-right: auto;
     margin-bottom: 104px;
+
+    display: flex;
+    gap: 80px;
+
+    position: relative;
 }
 
 .event-title {
     margin: 0;
     margin-bottom: 15px;
     padding: 0;
+
     font-family: 'Bebas Neue';
     font-size: 25px;
     color: #3877EE;
@@ -92,6 +127,7 @@ body {
 
 .event-item {
     height: 135px;
+
     font-size: 20px;
     line-height: 30px;
     color: #42567A;
@@ -99,10 +135,13 @@ body {
 
 .years-container {
     width: 973px;
+
     display: flex;
     justify-content: space-between;
+
     font-weight: 700;
     font-size: 200px;
+
     position: absolute;
     top: 50%;
     left: 50%;
@@ -116,4 +155,84 @@ body {
 
 .date-to {
     color: #EF5DA8;
+}
+
+.switch-buttons {
+    width: 120px;
+    height: 88px;
+
+    position: absolute;
+    bottom: 56px;
+    left: 80px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    border: 1px solid rgb(66, 86, 122, 0.5);
+    border-radius: 50%;
+
+    background: transparent;
+
+    position: relative;
+
+    transition: background-color 0.3s ease;
+
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgb(66, 86, 122, 0.1);
+}
+
+.button:active {
+    background-color: rgb(66, 86, 122, 0.2);
+}
+
+.button.button.prev-date,
+.button.button.next-date {
+    width: 50px;
+    height: 50px;
+}
+
+.button.prev-date::after,
+.button.next-date::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 14px;
+    height: 14px;
+
+    background-image: url(../img/svg/Vector\ 2.svg);
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%) translateX(2px);
+}
+
+.button.next-date::after {
+    transform: translate(-50%, -50%) translateX(-2px) rotate(180deg);
+}
+
+.selected-info {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.next-event-button {
+    width: 40px;
+    height: 40px;
+
+    background-image: url(../img/svg/Vector\ 2.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    position: absolute;
+    top: 50%;
+    right: -80px;
+    transform: translateY(-50%)rotate(180deg);
 }

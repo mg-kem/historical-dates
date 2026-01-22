@@ -1,4 +1,5 @@
 import YearsContainer from './years-container';
+import SwitchButtons from './switch-buttons';
 
 export default function HistoricalDate() {
     return (
@@ -10,6 +11,7 @@ export default function HistoricalDate() {
             <div className="link-container">
                 <a href='#'></a>
             </div>
+            <SwitchButtons />
         </div>
     );
 }

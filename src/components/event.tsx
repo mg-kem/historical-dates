@@ -7,9 +7,9 @@ interface EventProps {
 
 export default function Event({ heading, description }: EventProps): JSX.Element {
     return (
-        <div className="event-item">
+        <li className="event-item">
             <h2 className="event-title">{heading}</h2>
             <p className="event-description">{description}</p>
-        </div>
+        </li>
     )
 }
