@@ -1,12 +1,30 @@
 import { JSX } from 'react';
-import HistoricalDate from '../components/historical-dates';
-import EventList from '../components/event-list';
+import { IMockData } from '../mock/mock';
+import MainPage from '../pages/main-page';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import ErrorPage from '../pages/error-page/error-page';
 
-export default function App(): JSX.Element {
+
+interface IAppProps {
+    mockData: IMockData[];
+}
+
+const exportCategories = (data: IMockData[]) => {
+    return data.map((item) => item.category);
+}
+
+export default function App({ mockData }: IAppProps): JSX.Element {
+    const categories: string[] = exportCategories(mockData);
+    const currentCategory = categories[0] || '';
+
     return (
-        <div className="container">
-            <HistoricalDate />
-            <EventList />
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Navigate to={`/${currentCategory}`} replace />} />
+                <Route path={`/:category`} element={<MainPage data={mockData} categories={categories} />} />
+                <Route path='*' element={<ErrorPage />} />
+            </Routes>
+        </BrowserRouter>
+
     );
 }

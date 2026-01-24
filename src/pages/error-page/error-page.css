@@ -1,0 +1,26 @@
+.error-page {
+    width: 420px;
+    margin-top: 16.7vh;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 94px;
+    text-align: center;
+    font-size: 30px;
+    background-image: url('../../../public/img/page-not-found.png');
+    background-size: 60px 73px;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+.error__link-to-main {
+    margin: 0 auto;
+    text-align: center;
+    width: 150px;
+    font-size: 20px;
+    transition: all 0.5s ease;
+  }
+  
+  .error__link-to-main:hover {
+    color: royalblue;
+    transform: scale(1.2);
+  }
