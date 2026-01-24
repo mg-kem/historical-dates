@@ -36,6 +36,7 @@ export default function EventList({ data, currentCategory }: IEventListProps) {
         <ul className="event-list">
             <Swiper
                 ref={swiperRef}
+                key={currentCategory}
                 spaceBetween={80}
                 slidesPerView={3}
                 onSlideChange={handleSlideChange} // Вызывается при каждом изменении слайда
