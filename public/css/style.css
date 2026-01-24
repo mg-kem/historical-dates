@@ -1,5 +1,9 @@
 @import './fonts.css';
 
+html {
+    background-color: rgb(229, 229, 229);
+}
+
 ul {
     margin: 0;
     padding: 0;
@@ -170,40 +174,48 @@ body {
     left: 80px;
 }
 
-.buttons-container {
+.selected-info {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.switching-dates-container {
     display: flex;
     justify-content: space-between;
 }
 
 .button {
-    border: 1px solid rgb(66, 86, 122, 0.5);
+    border: 0;
     border-radius: 50%;
 
-    background: transparent;
-
-    position: relative;
-
     transition: background-color 0.3s ease;
-
     cursor: pointer;
 }
 
-.button:hover {
-    background-color: rgb(66, 86, 122, 0.1);
-}
-
-.button:active {
-    background-color: rgb(66, 86, 122, 0.2);
-}
-
-.button.button.prev-date,
-.button.button.next-date {
+.button-prev-date,
+.button-next-date {
     width: 50px;
     height: 50px;
+
+    border: 1px solid rgb(66, 86, 122, 0.5);
+
+    background: transparent;
+    position: relative;
 }
 
-.button.prev-date::after,
-.button.next-date::after {
+.button-prev-date:hover,
+.button-next-date:hover {
+    background-color: rgba(255,255,255, 0.5);
+}
+
+.button-prev-date:active,
+.button-next-date:active  {
+    background-color: rgb(255, 255, 255);
+}
+
+.button-prev-date::after,
+.button-next-date::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -212,28 +224,25 @@ body {
     width: 14px;
     height: 14px;
 
-    background-image: url(../img/svg/Vector\ 2.svg);
-    background-repeat: no-repeat;
+    mask-image: url(../img/svg/Vector\ 2.svg);
+    mask-repeat: no-repeat;
+
+    /* background-image: url(../img/svg/Vector\ 2.svg);
+    background-repeat: no-repeat; */
+    background-color: rgb(66,86,122);
     transform: translate(-50%, -50%) translateX(2px);
 }
 
-.button.next-date::after {
+.button-next-date::after {
     transform: translate(-50%, -50%) translateX(-2px) rotate(180deg);
 }
 
-.selected-info {
-    margin: 0;
-    margin-bottom: 20px;
-    font-size: 14px;
-}
-
-.next-event-button {
+.button-next-event,
+.button-prev-event {
     width: 40px;
     height: 40px;
 
-    background-image: url(../img/svg/Vector\ 2.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+    box-shadow: 0 0 15px 0 rgba(56,119,238, 0.1);
 
     position: absolute;
     top: 50%;
@@ -241,17 +250,29 @@ body {
     transform: translateY(-50%)rotate(180deg);
 }
 
-/* Стили для кнопки "Назад" - симметрично кнопке "Вперед" */
-.prev-event-button {
-    width: 40px;
-    height: 40px;
-
-    background-image: url(../img/svg/Vector\ 2.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-
-    position: absolute;
+.button-prev-event {
     top: 50%;
     left: -50px;
     transform: translateY(-50%);
+}
+
+.button-prev-event::after,
+.button-next-event::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 14px;
+    height: 14px;
+    mask-image: url(../img/svg/Vector\ 2.svg);
+    mask-repeat: no-repeat;
+    background-color: rgb(56,119,238); 
+   
+    transform: translate(-50%, -50%) translateX(2px);
+}  
+
+.button-next-event:hover,
+.button-prev-event:hover {
+    background-color: rgba(56,119,238, 0.1);
 }

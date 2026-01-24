@@ -55,7 +55,7 @@ export default function EventList() {
             {/* Кнопка "Назад" - показывается только если слайдер был сдвинут и можно вернуться */}
             {hasMoved && !isBeginning && (
                 <button
-                    className="button prev-event-button"
+                    className="button button-prev-event"
                     onClick={() => swiperRef.current?.swiper.slidePrev()}
                 >
                 </button>
@@ -64,7 +64,7 @@ export default function EventList() {
             {/* Кнопка "Вперед" - скрывается когда достигнут конец */}
             {!isEnd && (
                 <button
-                    className="button next-event-button"
+                    className="button button-next-event"
                     onClick={() => swiperRef.current?.swiper.slideNext()}
                 >
                 </button>
