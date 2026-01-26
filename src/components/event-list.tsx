@@ -2,10 +2,15 @@ import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react';
 import 'swiper/css';
 import { useRef, useState } from 'react';
 import Event from './event';
+import { IMockData } from '../mock/mock';
 
-export default function EventList() {
+interface IEventListProps {
+    data: IMockData[];
+    currentCategory: string;
+}
+
+export default function EventList({ data, currentCategory }: IEventListProps) {
     const swiperRef = useRef<SwiperRef | null>(null);
-    console.log(swiperRef);
 
     const [isEnd, setIsEnd] = useState(false); // Достигли ли мы конца слайдов
     const [isBeginning, setIsBeginning] = useState(true); // Находимся ли мы в начале
@@ -25,34 +30,27 @@ export default function EventList() {
         }
     };
 
+    const filteredEvents = data.find((item) => item.category === currentCategory)?.events;
+
     return (
         <ul className="event-list">
             <Swiper
                 ref={swiperRef}
+                key={currentCategory}
                 spaceBetween={80}
                 slidesPerView={3}
                 onSlideChange={handleSlideChange} // Вызывается при каждом изменении слайда
                 onSwiper={handleSlideChange} // Вызывается при инициализации для установки начального состояния
             >
-                <SwiperSlide>
-                    <Event heading='2015' description='13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды' />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Event heading='2016' description='Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11' />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Event heading='2017' description='Компания Tesla официально представила первый в мире электрический грузовик Tesla Semi' />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                    <Event heading='2017' description='Компания Tesla официально представила первый в мире электрический грузовик Tesla Semi' />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Event heading='2017' description='Компания Tesla официально представила первый в мире электрический грузовик Tesla Semi' />
-                </SwiperSlide>
+                {
+                    filteredEvents?.map((filterEvent) => (
+                        <SwiperSlide key={filterEvent.id}>
+                            <Event heading={filterEvent.year} description={filterEvent.description} />
+                        </SwiperSlide>
+                    ))
+                }
             </Swiper>
 
-            {/* Кнопка "Назад" - показывается только если слайдер был сдвинут и можно вернуться */}
             {hasMoved && !isBeginning && (
                 <button
                     className="button button-prev-event"
@@ -61,7 +59,6 @@ export default function EventList() {
                 </button>
             )}
 
-            {/* Кнопка "Вперед" - скрывается когда достигнут конец */}
             {!isEnd && (
                 <button
                     className="button button-next-event"

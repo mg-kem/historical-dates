@@ -41,13 +41,20 @@ body {
     width: 530px;
     height: 530px;
 
-    border: 1px solid rgba(66, 86, 122, 0.1);
+    border: 1px solid rgba(66, 86, 122, 0.6);
     border-radius: 50%;
 
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.link-item a {
+    text-decoration: none;
+    color: rgb(66,86,122);
+    font-size: 20px;
+    line-height: 30px;
 }
 
 .container::before {
@@ -193,6 +200,10 @@ body {
     cursor: pointer;
 }
 
+.disabled-button {
+    opacity: 0.2;
+}
+
 .button-prev-date,
 .button-next-date {
     width: 50px;
@@ -275,4 +286,10 @@ body {
 .button-next-event:hover,
 .button-prev-event:hover {
     background-color: rgba(56,119,238, 0.1);
+}
+
+a.active-link {
+    color: #3877EE;
+    transition: color 1.5s ease;
+    transform: scale(1.1);
 }
