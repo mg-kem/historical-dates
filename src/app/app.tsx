@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { JSX } from 'react';
 import { IMockData } from '../mock/mock';
 import MainPage from '../pages/main-page';
@@ -14,8 +15,15 @@ const exportCategories = (data: IMockData[]) => {
 }
 
 export default function App({ mockData }: IAppProps): JSX.Element {
-    const categories: string[] = exportCategories(mockData);
-    const currentCategory = categories[0] || '';
+
+    const [categories, setCategories] = useState<string[]>([]);
+    const [currentCategory, setCurrentCategory] = useState<string>('');
+
+    useEffect(() => {
+        const categories: string[] = exportCategories(mockData);
+        setCategories(categories);
+        setCurrentCategory(categories[0] || '');
+    }, [mockData]);
 
     return (
         <BrowserRouter>

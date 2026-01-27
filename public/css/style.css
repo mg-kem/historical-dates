@@ -22,8 +22,8 @@ body {
     margin: 0 auto;
     box-sizing: border-box;
 
-    border-left: 1px solid rgba(66, 86, 122, 0.1);
-    border-right: 1px solid rgba(66, 86, 122, 0.1);
+    border-left: 1px solid rgba(66, 86, 122, 0.2);
+    border-right: 1px solid rgba(66, 86, 122, 0.2);
 
     display: flex;
     flex-direction: column;
@@ -37,25 +37,81 @@ body {
     }
 }
 
-.link-container {
+.circular-menu {
     width: 530px;
     height: 530px;
 
-    border: 1px solid rgba(66, 86, 122, 0.6);
+    border: 1px solid rgba(66, 86, 122, 0.2);
     border-radius: 50%;
-
+   
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.link-item a {
+.circular-item {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: rgb(66,86,122);
+    border-radius: 50%;
+}
+
+.circular-item__link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: 700;
     text-decoration: none;
     color: rgb(66,86,122);
-    font-size: 20px;
-    line-height: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    transition: all 0.2s ease;
 }
+
+.circular-item__link:hover,
+.circular-item__link-active {
+    border: 1px solid rgba(48,62,88, 0.5);
+    background-color: rgb(229, 229, 229);
+    z-index: 10;
+}
+
+.circular-item__link-text {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-left: 20px;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+
+.circular-item__link-active .circular-item__link-text {
+opacity: 1;
+}
+
+.circular-item__link-index {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 50%;
+    left: 50%;
+    font-weight: 400;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.circular-item__link:hover .circular-item__link-index,
+.circular-item__link-active .circular-item__link-index {
+    opacity: 1;
+}
+
 
 .container::before {
     content: '';
@@ -66,7 +122,7 @@ body {
     width: 1px;
     height: 100%;
 
-    background: rgba(66, 86, 122, 0.1);
+    background: rgba(66, 86, 122, 0.2);
 }
 
 .historical-dates {
@@ -85,7 +141,8 @@ body {
     width: 100%;
     height: 1px;
 
-    background: rgba(66, 86, 122, 0.1);
+    background: rgba(66, 86, 122, 0.2);
+    z-index: -1;
 }
 
 .header-title {
@@ -286,10 +343,4 @@ body {
 .button-next-event:hover,
 .button-prev-event:hover {
     background-color: rgba(56,119,238, 0.1);
-}
-
-a.active-link {
-    color: #3877EE;
-    transition: color 1.5s ease;
-    transform: scale(1.1);
 }
