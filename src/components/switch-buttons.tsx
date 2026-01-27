@@ -21,6 +21,9 @@ export default function SwitchButtons({ categories, currentCategory }: ISwitchBu
         } else if (indexCurrentCategory === categoriesLength - 1) {
             setIsDisabledPrev(false);
             setIsDisabledNext(true);
+        } else {
+            setIsDisabledPrev(false);
+            setIsDisabledNext(false);
         }
     }, [indexCurrentCategory, categoriesLength]);
 
@@ -30,8 +33,8 @@ export default function SwitchButtons({ categories, currentCategory }: ISwitchBu
             return;
         }
         const prevCategory = categories[indexPrevCategory];
-
         navigate(`/${prevCategory}`, { replace: true });
+        setIsDisabledNext(false);
     };
 
     const handleNext = () => {
@@ -41,6 +44,7 @@ export default function SwitchButtons({ categories, currentCategory }: ISwitchBu
         }
         const nextCategory = categories[indexNextCategory];
         navigate(`/${nextCategory}`, { replace: true });
+        setIsDisabledPrev(false);
     };
 
     return (
