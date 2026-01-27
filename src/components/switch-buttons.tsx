@@ -24,8 +24,6 @@ export default function SwitchButtons({ categories, currentCategory }: ISwitchBu
         }
     }, [indexCurrentCategory, categoriesLength]);
 
-
-
     const handlePrev = () => {
         const indexPrevCategory = indexCurrentCategory - 1;
         if (indexPrevCategory < 0) {

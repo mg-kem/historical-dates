@@ -68,6 +68,42 @@ const mockData: IMockData[] = [
                 description: 'The Who',
             }
         ]
+    },
+    {
+        id: 3,
+        category: 'Литература',
+        dateStart: '1990',
+        dateEnd: '2000',
+        events: [
+            {
+                id: 1,
+                year: '1990',
+                description: 'Книга 1',
+            },
+        ]
+    },
+    {
+        id: 4,
+        category: 'Наука',
+        dateStart: '2015',
+        dateEnd: '2022',
+        events: [
+            {
+                id: 1,
+                year: '2015',
+                description: '13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды',
+            },
+            {
+                id: 2,
+                year: '2016',
+                description: 'Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11',
+            },
+            {
+                id: 3,
+                year: '2017',
+                description: 'Компания Tesla официально представила первый в мире электрический грузовик Tesla Semi',
+            },
+        ]
     }
 ]
 

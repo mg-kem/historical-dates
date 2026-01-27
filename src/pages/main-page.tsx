@@ -19,18 +19,18 @@ const getYears = (data: IMockData[], currentCategory: string) => {
 }
 
 export default function MainPage({ data, categories }: IMainPageProps) {
-    const currentCategory = useParams();
-    const [yearStart, yearEnd] = getYears(data, currentCategory.category as string);
+    const { category } = useParams();
+    const [yearStart, yearEnd] = getYears(data, category as string);
 
     return (
         <div className="container">
             <div className="historical-dates">
                 <Caption />
                 <YearsContainer yearStart={yearStart as string} yearEnd={yearEnd as string} />
-                <RadialMenu categories={categories} currentCategory={currentCategory.category as string} />
-                <SwitchButtons categories={categories} currentCategory={currentCategory.category as string} />
+                <RadialMenu categories={categories} currentCategory={category as string} />
+                <SwitchButtons categories={categories} currentCategory={category as string} />
             </div>
-            <EventList data={data} currentCategory={currentCategory.category as string} />
+            <EventList data={data} currentCategory={category as string} />
         </div>
     )
 }
