@@ -23,7 +23,7 @@ export default function MainPage({ data, categories }: IMainPageProps) {
     const [yearStart, yearEnd] = getYears(data, category as string);
 
     return (
-        <div className="container">
+        <div className="wrapper-container">
             <div className="historical-dates">
                 <Caption />
                 <YearsContainer yearStart={yearStart as string} yearEnd={yearEnd as string} />

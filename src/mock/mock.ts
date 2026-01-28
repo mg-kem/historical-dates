@@ -62,11 +62,6 @@ const mockData: IMockData[] = [
                 year: '1991',
                 description: 'The Rolling Stones',
             },
-            {
-                id: 3,
-                year: '1997',
-                description: 'The Who',
-            }
         ]
     },
     {
@@ -97,6 +92,11 @@ const mockData: IMockData[] = [
                 id: 2,
                 year: '2016',
                 description: 'Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11',
+            },
+            {
+                id: 3,
+                year: '2017',
+                description: 'Компания Tesla официально представила первый в мире электрический грузовик Tesla Semi',
             },
             {
                 id: 3,

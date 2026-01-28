@@ -31,6 +31,8 @@ export default function EventList({ data, currentCategory }: IEventListProps) {
     };
 
     const filteredEvents = data.find((item) => item.category === currentCategory)?.events;
+    const eventCount = filteredEvents?.length || 0;
+    const slidesPerView = eventCount > 3 ? 3 : eventCount;
 
     return (
         <ul className="event-list">
@@ -38,7 +40,8 @@ export default function EventList({ data, currentCategory }: IEventListProps) {
                 ref={swiperRef}
                 key={currentCategory}
                 spaceBetween={80}
-                slidesPerView={3}
+                centeredSlides={false}
+                slidesPerView={slidesPerView}
                 onSlideChange={handleSlideChange} // Вызывается при каждом изменении слайда
                 onSwiper={handleSlideChange} // Вызывается при инициализации для установки начального состояния
             >
@@ -51,21 +54,25 @@ export default function EventList({ data, currentCategory }: IEventListProps) {
                 }
             </Swiper>
 
-            {hasMoved && !isBeginning && (
-                <button
-                    className="button button-prev-event"
-                    onClick={() => swiperRef.current?.swiper.slidePrev()}
-                >
-                </button>
-            )}
+            {
+                hasMoved && !isBeginning && (
+                    <button
+                        className="button button-prev-event"
+                        onClick={() => swiperRef.current?.swiper.slidePrev()}
+                    >
+                    </button>
+                )
+            }
 
-            {!isEnd && (
-                <button
-                    className="button button-next-event"
-                    onClick={() => swiperRef.current?.swiper.slideNext()}
-                >
-                </button>
-            )}
+            {
+                !isEnd && (
+                    <button
+                        className="button button-next-event"
+                        onClick={() => swiperRef.current?.swiper.slideNext()}
+                    >
+                    </button>
+                )
+            }
         </ul >
     );
 }
