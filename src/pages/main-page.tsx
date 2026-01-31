@@ -8,29 +8,29 @@ import { useParams } from 'react-router-dom';
 import Caption from '../components/caption';
 
 interface IMainPageProps {
-    data: IMockData[];
-    categories: string[];
+  data: IMockData[];
+  categories: string[];
 }
 
-const getYears = (data: IMockData[], currentCategory: string) => {
-    const yearStart = data.find((item) => item.category === currentCategory)?.dateStart;
-    const yearEnd = data.find((item) => item.category === currentCategory)?.dateEnd;
-    return [yearStart, yearEnd];
+const getYearsOfCurrentCategory = (data: IMockData[], currentCategory: string) => {
+  const yearStart = data.find((item) => item.category === currentCategory)?.dateStart;
+  const yearEnd = data.find((item) => item.category === currentCategory)?.dateEnd;
+  return [yearStart, yearEnd];
 }
 
 export default function MainPage({ data, categories }: IMainPageProps) {
-    const { category } = useParams();
-    const [yearStart, yearEnd] = getYears(data, category as string);
+  const { category } = useParams();
+  const [yearStart, yearEnd] = getYearsOfCurrentCategory(data, category as string);
 
-    return (
-        <div className="container">
-            <div className="historical-dates">
-                <Caption />
-                <YearsContainer yearStart={yearStart as string} yearEnd={yearEnd as string} />
-                <RadialMenu categories={categories} currentCategory={category as string} />
-                <SwitchButtons categories={categories} currentCategory={category as string} />
-            </div>
-            <EventList data={data} currentCategory={category as string} />
-        </div>
-    )
+  return (
+    <div className="wrapper-container">
+      <section className="historical-dates">
+        <Caption />
+        <YearsContainer yearStart={yearStart as string} yearEnd={yearEnd as string} />
+        <RadialMenu categories={categories} currentCategory={category as string} />
+        <SwitchButtons categories={categories} currentCategory={category as string} />
+      </section>
+      <EventList data={data} currentCategory={category as string} />
+    </div>
+  )
 }
