@@ -1,17 +1,17 @@
 interface IYearsContainerProps {
-    yearStart: string;
-    yearEnd: string;
+  yearStart: string;
+  yearEnd: string;
 }
 
 export default function YearsContainer({ yearStart, yearEnd }: IYearsContainerProps) {
-    return (
-        <div className="years-container">
-            <p className="date-up">
-                {yearStart}
-            </p>
-            <p className="date-to">
-                {yearEnd}
-            </p>
-        </div>
-    )
+  return (
+    <div className="years-container">
+      <p className="years-container__date-up">
+        {yearStart}
+      </p>
+      <p className="years-container__date-to">
+        {yearEnd}
+      </p>
+    </div>
+  )
 }
