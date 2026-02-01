@@ -33,7 +33,7 @@ body {
 }
 .wrapper-container { 
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   max-width: 1400px;
   margin: 0 auto;
   border-left: 1px solid var(--color-border); 
@@ -51,7 +51,6 @@ body {
   left: 50%;
 }
 .historical-dates {
-  border: 1px solid red;
   margin-top: 170px;
   display: flex;
   flex-direction: column;
@@ -243,6 +242,11 @@ body {
   line-height: 120%;
 }
 
+/* Скрыть пагинацию на десктопе */
+.event-list .swiper-pagination {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .circular-menu {
     display: none;
@@ -250,11 +254,12 @@ body {
 
   .wrapper-container {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     max-width: 768px;
     padding: 0 20px;
     overflow-x: hidden;
     border: none;
+    padding-bottom: 85px;
   }
 
   .wrapper-container::after {
@@ -265,10 +270,12 @@ body {
     margin: 0;
     margin-top: 59px;
     padding: 0;
+    flex-shrink: 0;
   }
 
   .historical-dates::after {
     top: 293px;
+    transform: translateX(0px);
   }
 
   .header-title {
@@ -281,5 +288,68 @@ body {
     width: 100%;
     max-width: 273px;
     margin-bottom: 77px;
+  }
+
+  .switch-buttons {
+    position: fixed;
+    bottom: 13px;
+    margin: 0;
+  }
+
+  .switch-buttons__selected-info {
+    margin-bottom: 10px;
+  }
+
+  .switch-buttons__container {
+    width: 58px;
+  }
+
+  .button-prev-date,
+  .button-next-date {
+    width: 25px;
+    height: 25px;
+  }
+
+  .button-prev-event,
+  .button-next-event {
+    display: none;
+  }
+  
+  .event-list {
+    padding: 0;
+    margin-bottom: 0;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .event-list .swiper {
+    height: 100%;
+    flex: 1;
+  }
+
+  .event-list .swiper-slide:not(.swiper-slide-active) {
+    opacity: 0.5;
+  }
+
+  /* Пагинация для мобилки */
+  .event-list .swiper-pagination.swiper-pagination {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    gap: 10px;
+  }
+
+  .event-list .swiper-pagination-bullet.swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-main);
+    opacity: 0.4;
+  }
+
+  .event-list .swiper-pagination-bullet-active.swiper-pagination-bullet-active {
+    opacity: 1;
   }
 }
