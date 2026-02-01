@@ -1,11 +1,12 @@
 interface IYearsContainerProps {
   yearStart: string;
   yearEnd: string;
+  yearsRef: React.RefObject<HTMLDivElement | null>
 }
 
-export default function YearsContainer({ yearStart, yearEnd }: IYearsContainerProps) {
+export default function YearsContainer({ yearStart, yearEnd, yearsRef }: IYearsContainerProps) {
   return (
-    <div className="years-container">
+    <div className="years-container" ref={yearsRef}>
       <p className="years-container__date-start">
         {yearStart}
       </p>
