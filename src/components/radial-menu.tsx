@@ -5,11 +5,11 @@ import { gsap } from 'gsap';
 interface IRadialMenuProps {
   categories: string[] | null
   currentCategory: string
+  menuRef: React.RefObject<HTMLUListElement | null>
+  labelCategoryRef: React.RefObject<HTMLDivElement | null>
 }
 
-export default function RadialMenu({ categories, currentCategory }: IRadialMenuProps) {
-  const menuRef = useRef<HTMLUListElement | null>(null);
-  const labelCategoryRef = useRef<HTMLDivElement | null>(null);
+export default function RadialMenu({ categories, currentCategory, menuRef, labelCategoryRef }: IRadialMenuProps) {
 
   if (!categories) return null;
 
@@ -18,9 +18,7 @@ export default function RadialMenu({ categories, currentCategory }: IRadialMenuP
   const centerY = 265;
   const countLinks = categories.length;
   const angleOffset = -Math.PI / 3;
-  const angleStep = 360 / countLinks;
   const currentIndexOfCategory = categories.indexOf(currentCategory);
-  const targetAngle = -currentIndexOfCategory * angleStep;
 
   const getPosition = (index: number) => {
     const angle = (2 * Math.PI * index) / countLinks + angleOffset;
@@ -29,47 +27,11 @@ export default function RadialMenu({ categories, currentCategory }: IRadialMenuP
     return { x, y };
   }
 
-  useEffect(() => {
-    if (!menuRef.current) {
-      return;
-    }
-
-    gsap.to(menuRef.current, {
-      rotation: targetAngle,
-      duration: 2,
-      ease: 'expo.out',
-    })
-  }, [targetAngle]);
-
-  useEffect(() => {
-    gsap.to('.circular-item__link-index', {
-      rotation: -targetAngle,
-      duration: 2,
-      ease: 'expo.out',
-    })
-  }, [targetAngle]);
-
-  useEffect(() => {
-    gsap.fromTo(labelCategoryRef.current, {
-      opacity: 0,
-      x: 50,
-      y: 0
-    },
-      {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        duration: 2,
-        ease: 'expo.out',
-      })
-  }, [currentCategory]);
-
   return (
     <div className="circular-menu" >
       <ul className="circular-list" ref={menuRef}>
         {categories.map((category, index) => {
           const { x, y } = getPosition(index);
-
           return (
             <li
               key={category}
@@ -94,6 +56,5 @@ export default function RadialMenu({ categories, currentCategory }: IRadialMenuP
         </h2>
       </div>
     </div>
-
   )
 }
