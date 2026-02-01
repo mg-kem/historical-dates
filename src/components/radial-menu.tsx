@@ -9,7 +9,7 @@ interface IRadialMenuProps {
 
 export default function RadialMenu({ categories, currentCategory }: IRadialMenuProps) {
   const menuRef = useRef<HTMLUListElement | null>(null);
-  const linkTextRef = useRef<HTMLSpanElement | null>(null);
+  const labelCategoryRef = useRef<HTMLDivElement | null>(null);
 
   if (!categories) return null;
 
@@ -36,26 +36,33 @@ export default function RadialMenu({ categories, currentCategory }: IRadialMenuP
 
     gsap.to(menuRef.current, {
       rotation: targetAngle,
-      duration: 0.9,
+      duration: 2,
       ease: 'expo.out',
     })
   }, [targetAngle]);
-
-  // useEffect(() => {
-  //   gsap.to('.circular-item__link-text', {
-  //     rotation: -targetAngle,
-  //     duration: 0.9,
-  //     ease: 'expo.out',
-  //   })
-  // }, [targetAngle]);
 
   useEffect(() => {
     gsap.to('.circular-item__link-index', {
       rotation: -targetAngle,
-      duration: 0.9,
+      duration: 2,
       ease: 'expo.out',
     })
   }, [targetAngle]);
+
+  useEffect(() => {
+    gsap.fromTo(labelCategoryRef.current, {
+      opacity: 0,
+      x: 50,
+      y: 0
+    },
+      {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        duration: 2,
+        ease: 'expo.out',
+      })
+  }, [currentCategory]);
 
   return (
     <div className="circular-menu" >
@@ -81,7 +88,7 @@ export default function RadialMenu({ categories, currentCategory }: IRadialMenuP
           )
         })}
       </ul>
-      <div className="circular-menu__text">
+      <div className="circular-menu__text" ref={labelCategoryRef}>
         <h2 className="circular-item__link-text">
           {categories[currentIndexOfCategory]}
         </h2>
