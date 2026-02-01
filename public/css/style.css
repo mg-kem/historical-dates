@@ -33,7 +33,6 @@ body {
 }
 .wrapper-container { 
   width: 100%;
-  /* height: 100vh; */
   max-width: 1400px;
   margin: 0 auto;
   border-left: 1px solid var(--color-border); 
@@ -75,6 +74,7 @@ body {
 .years-container {
   display: flex;
   justify-content: space-between;
+  align-self: center;
   font-size: 200px;
   font-weight: 700;
   line-height: 160px;
@@ -88,7 +88,7 @@ body {
 .years-container__date-end {
   color: rgb(239,93,168);
 }
-.circular-menu {
+.circular-list {
   position: absolute;
   border-radius: 50%;
   border: 1px solid var(--color-border);
@@ -97,6 +97,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
 .circular-item {
   position: absolute;
@@ -128,16 +130,10 @@ body {
 }
 .circular-item__link-text {
   position: absolute;
-  top: 50%;
-  left: 100%;
-  margin-left: 20px;
-  transform: translateY(-50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  top: 100px;
+  left: 900px;
 }
-.circular-item__link-active .circular-item__link-text {
-  opacity: 1;
-}
+
 .circular-item__link-index {
   position: absolute;
   margin: 0;
@@ -242,7 +238,6 @@ body {
   line-height: 120%;
 }
 
-/* Скрыть пагинацию на десктопе */
 .event-list .swiper-pagination {
   display: none;
 }
@@ -274,7 +269,7 @@ body {
   }
 
   .historical-dates::after {
-    top: 293px;
+    top: 234px;
     transform: translateX(0px);
   }
 
@@ -285,6 +280,7 @@ body {
 
   .years-container {
     font-size: 56px;
+    line-height: 73px;
     width: 100%;
     max-width: 273px;
     margin-bottom: 77px;
@@ -322,6 +318,15 @@ body {
     min-height: 0;
   }
 
+  .event-list .event-title {
+    font-size: 16px;
+  }
+
+  .event-list .event-description { 
+    font-size: 14px;
+    line-height: 145%;
+  }
+
   .event-list .swiper {
     height: 100%;
     flex: 1;
@@ -331,7 +336,6 @@ body {
     opacity: 0.5;
   }
 
-  /* Пагинация для мобилки */
   .event-list .swiper-pagination.swiper-pagination {
     display: flex !important;
     position: fixed !important;
