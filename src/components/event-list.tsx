@@ -48,9 +48,8 @@ export default function EventList({ data, currentCategory }: IEventListProps) {
         slidesPerView={3}
         breakpoints={{
           320: {
-            slidesPerView: 1,
-            spaceBetween: 16,
-            centeredSlides: true,
+            slidesPerView: 2,
+            spaceBetween: 25,
           },
           769: { slidesPerView: 3, spaceBetween: 80 },
         }}
