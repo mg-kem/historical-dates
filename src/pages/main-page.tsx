@@ -27,8 +27,10 @@ export default function MainPage({ data, categories }: IMainPageProps) {
       <section className="historical-dates">
         <Caption />
         <YearsContainer yearStart={yearStart as string} yearEnd={yearEnd as string} />
-        <RadialMenu categories={categories} currentCategory={category as string} />
+
+
         <SwitchButtons categories={categories} currentCategory={category as string} />
+        <RadialMenu categories={categories} currentCategory={category as string} />
       </section>
       <EventList data={data} currentCategory={category as string} />
     </div>
