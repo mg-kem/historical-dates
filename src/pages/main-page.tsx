@@ -60,11 +60,9 @@ export default function MainPage({ data, categories }: IMainPageProps) {
         }, 0)
       .fromTo(yearsRef.current, {
         opacity: 0,
-
       },
         {
           opacity: 1,
-
           duration: 1.1,
           ease: 'expo.out',
         }, 0.5)
