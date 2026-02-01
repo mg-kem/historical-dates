@@ -1,5 +1,7 @@
 import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
+import { Pagination } from 'swiper/modules'
 import 'swiper/css'
+import 'swiper/css/pagination'
 import { useRef, useState } from 'react'
 import Event from './event'
 import { IMockData } from '../mock/mock'
@@ -39,9 +41,19 @@ export default function EventList({ data, currentCategory }: IEventListProps) {
       <Swiper
         ref={swiperRef}
         key={currentCategory}
+        modules={[Pagination]}
+        pagination={{ clickable: true }}
         spaceBetween={80}
         centeredSlides={false}
         slidesPerView={3}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 16,
+            centeredSlides: true,
+          },
+          769: { slidesPerView: 3, spaceBetween: 80 },
+        }}
         onSlideChange={handleSlideChange} // Вызывается при каждом изменении слайда
         onSwiper={handleSlideChange} // Вызывается при инициализации для установки начального состояния
       >
